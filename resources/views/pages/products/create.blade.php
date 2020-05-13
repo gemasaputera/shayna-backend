@@ -14,6 +14,7 @@
             class="form-control @error('name') is-invalid @enderror"
             type="text"
             name="name"
+            placeholder="Masukkan nama barang"
             value="{{ old('name') }}"
           />
           @error('name')<div class="text-muted">{{$message}}</div>@enderror
@@ -24,14 +25,16 @@
             class="form-control @error('type') is-invalid @enderror"
             type="text"
             name="type"
+            placeholder="Masukkan tipe barang"
             value="{{ old('type') }}"
           />
           @error('type')<div class="text-muted">{{$message}}</div>@enderror
         </div>
         <div class="form-group">
-          <label for="description" class="form-control-label">Tipe Barang</label>
+          <label for="description" class="form-control-label">Deskripsi Barang</label>
           <textarea 
             name="description"
+            placeholder="Masukkan deskripsi barang"
             class="form-control ckeditor @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
           @error('description')<div class="text-muted">{{$message}}</div>@enderror
         </div>
@@ -41,6 +44,7 @@
             class="form-control @error('price') is-invalid @enderror"
             type="number"
             name="price"
+            placeholder="Masukkan harga barang"
             value="{{ old('price') }}"
           />
           @error('price')<div class="text-muted">{{$message}}</div>@enderror
@@ -51,6 +55,7 @@
             class="form-control @error('quantity') is-invalid @enderror"
             type="number"
             name="quantity"
+            placeholder="Masukkan stok barang"
             value="{{ old('quantity') }}"
           />
           @error('quantity')<div class="text-muted">{{$message}}</div>@enderror
@@ -62,3 +67,17 @@
     </div>
   </div>
 @endsection
+
+@push('after-script')
+    <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+                .create( document.querySelector( '.ckeditor' ) )
+                .then( editor => {
+                        console.log( editor );
+                } )
+                .catch( error => {
+                        console.error( error );
+                } );
+    </script>
+@endpush
